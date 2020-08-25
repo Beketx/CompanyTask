@@ -1,0 +1,369 @@
+FORMAT: 1A
+HOST: https://techtask.apiblueprint.org/
+
+
+# techtask
+
+Polls is a simple API allowing consumers to view polls and vote in them.
+
+## Category Collection [/category]
+
+### Category All Questions [GET]
+
++ Response 200 (application/json)
+
+
+        {
+            "id": 1,
+            "title": "Kitchen",
+            "description": "Place where people cook and eat food"
+        },
+        {
+            "id": 2,
+            "title": "Bedroom",
+            "description": "Place where people sleep"
+        },
+        {
+            "id": 3,
+            "title": "Lounge",
+            "description": "Place where people relax and also watch TV"
+        }
+
+
+### Create a New Question [POST]
+
+
++ Request (application/json)
+
+        {
+            "id": 7,
+            "title": "Kit",
+            "description": "Place where people cook and eat food"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /category
+
+    + Body
+
+            {
+                "id": 7,
+                "title": "Kit",
+                "description": "Place where people cook and eat food"
+            }
+    
+## Question [/category/{category_id}]
+
++ Parameters
+    + category_id (number) - ID of the Category in the form of an integer
+
+### View a Questions Detail [GET]
+
+
++ Response 200 (application/json)
+        
+        {
+            "id": 2,
+            "title": "Lounge",
+            "description": "Place where people relax and also watch TV"
+        }
+
+
+
++ Parameters
+    + category_id (number) - ID of the Category in the form of an integer
+
+### Change a Category [PUT]
+
+
++ Request (application/json)
+
+        {
+            "id": 1,
+            "title": "Kitchen",
+            "description": "Place where people cook and eat fo-od"
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Location: /category/1
+
+    + Body
+
+            {
+                "id": 1,
+                "title": "Kitchen",
+                "description": "Place where people cook and eat fo-od"
+            }
+    
+
+
++ Parameters
+    + category_id (number) - ID of the Category in the form of an integer
+
+### Delete [DELETE]
+
++ Response 204
+
+## Category Collection [/category/{category_id}/subcategories]
+
++ Parameters
+    + category_id (number) - ID of the Category in the form of an integer
+
+### Category All Questions [GET]
+
++ Response 200 (application/json)
+
+
+        {
+            "title": "Gas stove",
+            "category": 1
+        },
+        {
+            "title": "Refrigeration",
+            "category": 1
+        },
+        {
+            "title": "Dishes",
+            "category": 1
+        }
+
+
+
+### Create a New Question [POST]
+
++ Request (application/json)
+
+        {
+            "title": "Gas stove",
+            "category": 1
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /category/{category_id}/subcategories
+
+    + Body
+        
+            {
+                "title": "Gas stove",
+                "category": 1
+            }
+    
+    
+## Category Collection [/good]
+
+### Category All Questions [GET]
+
++ Response 200 (application/json)
+
+
+        {
+            "title": "Knife",
+            "photo": "http://127.0.0.1:8000/media/images/247b90c3d333deda62_600x338.jpg",
+            "price": 10,
+            "size": 3,
+            "subcategory": 3,
+            "brand": "Zepper"
+        },
+        {
+            "title": "Cup",
+            "photo": "http://127.0.0.1:8000/media/images/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_2020-07-30_%D0%B2_17.40.42.png",
+            "price": 5000,
+            "size": 20,
+            "subcategory": 3,
+            "brand": "Razer"
+        },
+        {
+            "title": "Gas",
+            "photo": "http://127.0.0.1:8000/media/images/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_2020-07-30_%D0%B2_17.40.42_xmHgAP7.png",
+            "price": 40,
+            "size": 2,
+            "subcategory": 3,
+            "brand": "CO"
+        },
+        {
+            "title": "Spoon",
+            "photo": "http://127.0.0.1:8000/media/images/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_2020-08-17_%D0%B2_16.42.09.png",
+            "price": 50,
+            "size": 2,
+            "subcategory": 3,
+            "brand": "BMW"
+        }
+        
+### Create a New Question [POST]
+
+
++ Request (application/json)
+
+        {
+            "title": "Son",
+            "photo": "http://127.0.0.1:8000/media/images/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_2020-08-17_%D0%B2_16.42.09.png",
+            "price": 1000,
+            "size": 20,
+            "subcategory": 3,
+            "brand": "Mers"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /good
+
+    + Body
+
+            {
+                "title": "Son",
+                "photo": "http://127.0.0.1:8000/media/images/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_2020-08-17_%D0%B2_16.42.09.png",
+                "price": 1000,
+                "size": 20,
+                "subcategory": 3,
+                "brand": "Mers"
+            }
+    
+    
+
+
+
+
+
+
+
+## Question [good/{good_id}]
+
++ Parameters
+    + good_id (number) - ID of the Good in the form of an integer
+
+### View a Questions Detail [GET]
+
+
++ Response 200 (application/json)
+
+        {
+            "title": "Son",
+            "photo": "http://127.0.0.1:8000/media/images/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_2020-08-17_%D0%B2_16.42.09.png",
+            "price": 1000,
+            "size": 20,
+            "subcategory": 3,
+            "brand": "Mers"
+        }
+        
+## Retrieve method [/good/{good_id}]
+
++ Parameters
+    + good_id (number) - ID of the Good in the form of an integer
+
+### Delete [DELETE]
+
++ Response 204
+
+
+## Question [good/{good_id}]
+
++ Parameters
+    + good_id (number) - ID of the Good in the form of an integer
+
+### Change a Good [PUT]
+
+
++ Request (application/json)
+
+        {
+            "title": "Son",
+            "photo": "http://127.0.0.1:8000/media/images/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_2020-08-17_%D0%B2_16.42.09.png",
+            "price": 1000,
+            "size": 20,
+            "subcategory": 3,
+            "brand": "Mers---e"
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Location: /good/1
+
+    + Body
+
+            {
+                "title": "Son",
+                "photo": "http://127.0.0.1:8000/media/images/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_2020-08-17_%D0%B2_16.42.09.png",
+                "price": 1000,
+                "size": 20,
+                "subcategory": 3,
+                "brand": "Mers---e"
+            }
+
+
+
+
+
+
+## Question [good/{subcategory_id}/subcategories/]
+
++ Parameters
+    + subcategory_id (number) - ID of the Subcategory in the form of an integer
+
+### View a Questions Detail [GET]
+
+
++ Response 200 (application/json)
+
+
+        {
+            "title": "Knife",
+            "photo": "/media/images/247b90c3d333deda62_600x338.jpg",
+            "price": 10,
+            "size": 3,
+            "subcategory": 3,
+            "brand": "Zepper"
+        },
+        {
+            "title": "Cup",
+            "photo": "/media/images/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_2020-07-30_%D0%B2_17.40.42.png",
+            "price": 5000,
+            "size": 20,
+            "subcategory": 3,
+            "brand": "Razer"
+        },
+        {
+            "title": "Gas",
+            "photo": "/media/images/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_2020-07-30_%D0%B2_17.40.42_xmHgAP7.png",
+            "price": 40,
+            "size": 2,
+            "subcategory": 3,
+            "brand": "CO"
+        },
+        {
+            "title": "Spoon",
+            "photo": "/media/images/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_2020-08-17_%D0%B2_16.42.09.png",
+            "price": 50,
+            "size": 2,
+            "subcategory": 3,
+            "brand": "BMW"
+        }
+
+
+## Category Collection [/good/?title=Gas]
+
+### Category All Questions [GET]
+
++ Response 200 (application/json)
+
+
+        {
+            "title": "Gas",
+            "photo": "http://127.0.0.1:8000/media/images/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_2020-07-30_%D0%B2_17.40.42_xmHgAP7.png",
+            "price": 40,
+            "size": 2,
+            "subcategory": 3,
+            "brand": "CO"
+        }
